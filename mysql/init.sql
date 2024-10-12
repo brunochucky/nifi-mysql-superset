@@ -1,0 +1,73 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Tempo de geração: 11/10/2024 às 08:44
+-- Versão do servidor: 10.4.28-MariaDB
+-- Versão do PHP: 8.2.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Banco de dados: `depositos`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `report2221`
+--
+
+CREATE TABLE `report2221` (
+  `MONTH` varchar(9) DEFAULT NULL,
+  `YEAR` int(4) DEFAULT NULL,
+  `NEW REGISTRATIONS` varchar(6) DEFAULT NULL,
+  `UNIQUE DEPOSITORS` varchar(6) DEFAULT NULL,
+  `FTD` varchar(5) DEFAULT NULL,
+  `DEPOSIT TOTAL$` varchar(12) DEFAULT NULL,
+  `DEPOSIT TOTAL [Nº]` varchar(9) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Despejando dados para a tabela `report2221`
+--
+
+INSERT INTO `report2221` (`MONTH`, `YEAR`, `NEW REGISTRATIONS`, `UNIQUE DEPOSITORS`, `FTD`, `DEPOSIT TOTAL$`, `DEPOSIT TOTAL [Nº]`) VALUES
+('JANUARY', 2021, '7,010', '7,977', '2,894', '5,829,890.00', '43,620.00'),
+('FEBRUARY', 2021, '8,516', '8,922', '3,867', '5,681,433.00', '44,576.00'),
+('MARCH', 2021, '8,310', '8,897', '3,501', '6,656,506.00', '50,846.00'),
+('APRIL', 2021, '9,488', '9,625', '3,829', '6,476,612.00', '53,017.00'),
+('MAY', 2021, '9,643', '9,425', '3,546', '6,631,211.00', '54,521.00'),
+('JUNE', 2021, '8,865', '8,911', '3,132', '6,641,857.00', '54,142.00'),
+('JULY', 2021, '9,185', '10,501', '3,775', '7,682,131.00', '59,912.00'),
+('AUGUST', 2021, '9,941', '10,302', '3,480', '7,833,201.00', '62,562.00'),
+('SEPTEMBER', 2021, '14,806', '11,192', '4,025', '7,997,317.00', '64,223.00'),
+('OCTOBER', 2021, '14,164', '12,167', '4,448', '7,904,603.00', '69,112.00'),
+('NOVEMBER', 2021, '22,597', '11,885', '4,103', '8,136,538.00', '66,391.00'),
+('DECEMBER', 2021, '11,728', '11,728', '3,425', '8,696,191.00', '68,503.00'),
+('JANUARY', 2022, '12,622', '10,635', '3,765', '7,896,837.00', '65,723.00'),
+('FEBRUARY', 2022, '11,553', '10,432', '3,301', '7,754,376.00', '62,386.00'),
+('MARCH', 2022, '14,802', '10,566', '3,745', '7,998,381.00', '64,696.00'),
+('APRIL', 2022, '14,480', '11,178', '3,954', '7,701,577.00', '65,068.00'),
+('MAY', 2022, '13,903', '10,508', '3,638', '8,020,928.00', '61,359.00'),
+('JUNE', 2022, '12,210', '8,953', '2,954', '7,378,510.00', '57,692.00'),
+('JULY', 2022, '12,480', '8,701', '2,977', '7,511,214.00', '58,207.00'),
+('AUGUST', 2022, '12,784', '8,377', '2,769', '7,948,861.00', '58,543.00'),
+('SEPTEMBER', 2022, '14,669', '7,746', '2,643', '6,731,355.00', '52,632.00'),
+('OCTOBER', 2022, '14,768', '7,201', '2,187', '6,733,093.00', '50,521.00'),
+('NOVEMBER', 2022, '15,233', '7,497', '2,409', '6,477,608.00', '48,857.00'),
+('DECEMBER', 2022, '12,448', '7,043', '2,312', '6,933,353.00', '53,300.00');
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

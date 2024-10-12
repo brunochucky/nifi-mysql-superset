@@ -1,0 +1,58 @@
+services:
+  mysql:
+    build: ./mysql
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: betting_db
+      MYSQL_USER: nifiuser
+      MYSQL_PASSWORD: nifipassword
+    ports:
+      - "3306:3306"
+    networks:
+      - nifi-network
+    volumes:
+      - ./mysql_data:/var/lib/mysql # Persist database data
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql # Mount the init.sql script
+
+  nifi:
+    image: apache/nifi:latest
+    container_name: nifi
+    ports:
+      - "8080:8080"
+    environment:
+      - NIFI_WEB_HTTP_PORT=8080
+      - JAVA_HOME=/opt/java/openjdk
+      - NIFI_WEB_HTTP_HOST=0.0.0.0
+      - NIFI_WEB_HTTP_PORT=8080
+    depends_on:
+      - mysql
+    volumes:
+      - ./nifi_data:/opt/nifi/nifi-current/data # Persist only the data directory
+      - ./nifi_logs:/opt/nifi/nifi-current/logs # (Optional) Persist logs if needed
+    networks:
+      - nifi-network
+    entrypoint: /bin/bash -c "/opt/nifi/scripts/start.sh & /opt/nifi/nifi-current/data/startup-script.sh && tail -f /dev/null"
+
+  superset:
+    build: ./superset
+    container_name: superset
+    environment:
+      SUPERSET_ENV: development
+      SUPERSET_LOAD_EXAMPLES: "no"
+      SUPERSET_ADMIN_USER: admin
+      SUPERSET_ADMIN_PASSWORD: admin
+      SUPERSET_ADMIN_EMAIL: admin@admin.com
+      SUPERSET_DATABASE_URL: mysql://nifiuser:nifipassword@mysql:3306/betting_db
+    ports:
+      - "8088:8088"
+    networks:
+      - nifi-network
+    depends_on:
+      - mysql
+    volumes:
+      - ./superset_home:/app/superset_home
+
+networks:
+  nifi-network:
+    driver: bridge
